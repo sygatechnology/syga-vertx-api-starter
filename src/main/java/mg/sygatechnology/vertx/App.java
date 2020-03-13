@@ -29,7 +29,7 @@ public class App extends AbstractVerticle {
     @Override
     public void start(Promise<Void> future) {
 
-        Common.registerControllers();
+        Common.initRouter(vertx);
 
         //Router router = (new Routes(vertx)).router();
         Router router = Router.router(vertx);
