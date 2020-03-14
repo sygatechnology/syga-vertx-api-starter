@@ -13,11 +13,14 @@ public class RouterImpl implements Router {
         this.controller = c;
     }
 
-    public void registerGet(String path) {
-        Common.getRouter().get(path).produces("application/json").handler(this.controller::find);
+    public void registerGetHttpMethod(String path) {
+        Common.getRouter()
+                .get(path)
+                .produces("application/json")
+                .handler(this.controller::find);
     }
 
-    public void registerPost(String path) {
+    public void registerPostHttpMethod(String path) {
         Common.getRouter().post(path)
                 .consumes("application/*")
                 .produces("application/json")
@@ -25,22 +28,18 @@ public class RouterImpl implements Router {
                 .handler(this.controller::create);
     }
 
-    public void registerPut(String path) {
-        Common.getRouter().post(path)
+    public void registerPutHttpMethod(String path) {
+        Common.getRouter().put(path)
                 .consumes("application/*")
                 .produces("application/json")
                 .handler(BodyHandler.create())
                 .handler(this.controller::update);
     }
 
-    public void registerDelete(String path) {
-        Common.getRouter().get(path).produces("application/json").handler(this.controller::delete);
-    }
-
-    public void registerResource(String path) {
-        registerGet(path);
-        registerPost(path);
-        registerPut(path);
-        registerDelete(path);
+    public void registerDeleteHttpMethod(String path) {
+        Common.getRouter()
+                .delete(path)
+                .produces("application/json")
+                .handler(this.controller::delete);
     }
 }

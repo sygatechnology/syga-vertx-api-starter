@@ -2,14 +2,12 @@ package mg.sygatechnology.vertx.system.interfaces;
 
 public interface Router {
 
-    public void registerGet(String path);
+    public void registerGetHttpMethod(String path);
 
-    public void registerPost(String path);
+    public void registerPostHttpMethod(String path);
 
-    public void registerPut(String path);
+    public void registerPutHttpMethod(String path);
 
-    public void registerDelete(String path);
-
-    public void registerResource(String path);
+    public void registerDeleteHttpMethod(String path);
 
 }

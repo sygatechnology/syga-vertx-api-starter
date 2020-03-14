@@ -5,6 +5,8 @@ import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.shareddata.LocalMap;
+import mg.sygatechnology.vertx.config.AppConfig;
+import mg.sygatechnology.vertx.helpers.FileHelper;
 import mg.sygatechnology.vertx.vertx.helpers.DateHelper;
 
 public class VerticleLaucher {
@@ -20,6 +22,7 @@ public class VerticleLaucher {
                 final LocalMap<String, String> sharedData = vertx.sharedData().getLocalMap("cofing");
                 sharedData.put("environment", environment);
 
+                AppConfig.init();
 
                 System.out.println("Environment : " + environment);
                 System.out.println("Logs App is running at localhost:" + port+". Deployment id : " + res.result());

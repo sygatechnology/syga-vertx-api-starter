@@ -7,22 +7,22 @@ public class LogController extends Controller {
 
     @Override
     public void find(RoutingContext routingContext) {
-
+        System.out.println("Mety Find letsy e !!!!");
     }
 
     @Override
     public void create(RoutingContext routingContext) {
-
+        System.out.println("Mety Create letsy e !!!!");
     }
 
     @Override
     public void update(RoutingContext routingContext) {
-
+        System.out.println("Mety Update letsy e !!!!");
     }
 
     @Override
     public void delete(RoutingContext routingContext) {
-
+        System.out.println("Mety Delete letsy e !!!!");
     }
 
     @Override
