@@ -2,46 +2,26 @@ package mg.sygatechnology.vertx.system;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.web.Router;
-import mg.sygatechnology.vertx.helpers.FileHelper;
-import mg.sygatechnology.vertx.system.config.Config;
-import mg.sygatechnology.vertx.system.config.ConfigItem;
-import mg.sygatechnology.vertx.system.impl.RouterImpl;
-
-import java.util.List;
-
+import mg.sygatechnology.vertx.configs.Router;
+import mg.sygatechnology.vertx.configs.Config;
+import mg.sygatechnology.vertx.configs.ConfigItem;
 
 public class Common {
 
-    protected static Router router;
+    protected static io.vertx.ext.web.Router router;
 
     /**
      * Init App
      */
 
     public static void initApp(Vertx vertx) {
-        router = Router.router(vertx);
+        router = io.vertx.ext.web.Router.router(vertx);
     }
-
-    /*private static void initAppControllers() {
-        List<String> controllers = FileHelper.getFilesWithoutExt("./src/main/java/mg/sygatechnology/vertx/app/controllers");
-        String controllersPackage = "mg.sygatechnology.vertx.app.controllers";
-        for (String c : controllers) {
-            try {
-                Class cls = Class.forName(controllersPackage+"."+c);
-                Controller controller = (Controller) cls.newInstance();
-                controller.setGetHttpMethod(controller.routeGetMethod);
-
-            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
 
     /**
      * Get Router
      */
-    public static Router getRouter() {
+    public static io.vertx.ext.web.Router getRouter() {
         return router;
     }
 
@@ -70,15 +50,19 @@ public class Common {
      * Register Route
      */
     public static void registerRoute(String httpMethod, String path, Controller controller) {
-        RouterImpl routerImpl = new RouterImpl(controller);
+        Router router = new Router(controller);
+        httpMethod = httpMethod.toLowerCase();
+        if(! path.startsWith("/")) {
+            path = "/"+path;
+        }
         if(httpMethod.equals("get")) {
-            routerImpl.registerGetHttpMethod(path);
+            router.registerGetHttpMethod(path);
         } else if(httpMethod.equals("post")) {
-            routerImpl.registerPostHttpMethod(path);
+            router.registerPostHttpMethod(path);
         } else if(httpMethod.equals("put")) {
-            routerImpl.registerPutHttpMethod(path);
+            router.registerPutHttpMethod(path);
         } else if(httpMethod.equals("delete")) {
-            routerImpl.registerDeleteHttpMethod(path);
+            router.registerDeleteHttpMethod(path);
         }
     }
 
@@ -92,8 +76,9 @@ public class Common {
                                     .put("put", true)
                                     .put("delete", true);
         if(excludedMethods.length > 0) {
-            for (String m : excludedMethods){
-                routes.put(m, false);
+            for (String httpMethod : excludedMethods){
+                httpMethod = httpMethod.toLowerCase();
+                routes.put(httpMethod, false);
             }
         }
         routes.forEach(entry -> {

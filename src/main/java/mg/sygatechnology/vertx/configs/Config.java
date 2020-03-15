@@ -1,4 +1,4 @@
-package mg.sygatechnology.vertx.system.config;
+package mg.sygatechnology.vertx.configs;
 
 import java.awt.geom.IllegalPathStateException;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package mg.sygatechnology.vertx.config;
+package mg.sygatechnology.vertx.configs;
 
 import mg.sygatechnology.vertx.app.controllers.LogController;
 import mg.sygatechnology.vertx.system.Common;

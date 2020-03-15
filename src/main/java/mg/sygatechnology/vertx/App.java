@@ -3,7 +3,7 @@ package mg.sygatechnology.vertx;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import mg.sygatechnology.vertx.system.Common;
-import mg.sygatechnology.vertx.system.config.ConfigItem;
+import mg.sygatechnology.vertx.configs.ConfigItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

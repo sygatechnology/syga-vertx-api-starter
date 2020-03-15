@@ -1,4 +1,4 @@
-package mg.sygatechnology.vertx.system.config;
+package mg.sygatechnology.vertx.configs;
 
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
