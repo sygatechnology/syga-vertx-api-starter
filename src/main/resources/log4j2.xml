@@ -52,7 +52,7 @@
 	
     <Loggers>
         <!-- asynchronous loggers -->
-        <AsyncLogger name="mg.sygatechnology.vertx" additivity="false">
+        <AsyncLogger name="mg.sygatechnology.vertx" additivity="false" level="all">
             <AppenderRef ref="infoLog"/>
             <AppenderRef ref="debugLog"/>
             <AppenderRef ref="errorLog"/>
