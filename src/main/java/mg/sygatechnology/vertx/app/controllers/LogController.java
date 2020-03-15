@@ -7,7 +7,6 @@ public class LogController extends Controller {
 
     @Override
     public void find(RoutingContext routingContext) {
-        System.out.println("Mety Find letsy e !!!!");
     }
 
     @Override
