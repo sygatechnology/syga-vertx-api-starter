@@ -1,16 +1,14 @@
 package mg.sygatechnology.vertx;
 
-import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Promise;
-import mg.sygatechnology.vertx.system.Common;
+import io.vertx.core.DeploymentOptions;
+import io.vertx.core.Vertx;
+import io.vertx.core.VertxOptions;
+import io.vertx.core.json.JsonObject;
+import mg.sygatechnology.vertx.configs.Config;
 import mg.sygatechnology.vertx.configs.ConfigItem;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import mg.sygatechnology.vertx.system.http.HttpVerticle;
 
-
-public class App extends AbstractVerticle {
-
-    private static final Logger logger = LogManager.getLogger(App.class);
+public class App {
 
     public static void main(String[] args) {
 
@@ -21,27 +19,35 @@ public class App extends AbstractVerticle {
             environment = "development";
         }
 
-        ConfigItem confItem = Common.registerConfig(environment, "environments");
-
-        VerticleLaucher.deploy(environment, confItem.getInteger("port"));
-
+        final Vertx vertx = Vertx.vertx();
+        final VertxOptions vertxOptions = setVertxOptions();
+        vertx.deployVerticle(HttpVerticle.class.getName(), setDepOptions(vertxOptions, environment));
     }
 
-    @Override
-    public void start(Promise<Void> future) {
+    private static VertxOptions setVertxOptions(){
+        final VertxOptions vertxOptions = new VertxOptions();
+        final Long executeTime = vertxOptions.getMaxWorkerExecuteTime() * 10;
+        vertxOptions.setMaxWorkerExecuteTime(executeTime)
+                .setMaxEventLoopExecuteTime(vertxOptions.getMaxEventLoopExecuteTime() * 10)
+                .setBlockedThreadCheckInterval(8000);
+        return vertxOptions;
+    }
 
-        Common.initApp(vertx);
-
-        final String environment = config().getString("VXENV");
-        final int port = config().getInteger("VXPORT");
-        vertx.createHttpServer().requestHandler(Common.getRouter()).listen(port, result -> {
-            if(result.succeeded()){
-                System.out.println("Server start at localhost:" + port);
-                future.complete();
-            } else {
-                future.fail(result.cause());
-            }
-        });
+    private static DeploymentOptions setDepOptions(final VertxOptions vertxOptions, String environment){
+        ConfigItem configItem = Config.get(environment, true, "environments");
+        int instances = 1;
+        if(configItem.keyExists("instances")) {
+            instances = configItem.getInteger("instances");
+        }
+        if(configItem.keyExists("instances.available.processors") && configItem.getBoolean("available.processors")) {
+            instances = Runtime.getRuntime().availableProcessors();
+        }
+        final DeploymentOptions options = new DeploymentOptions()
+                .setInstances(instances)
+                .setWorker(true)
+                .setMaxWorkerExecuteTime(vertxOptions.getMaxWorkerExecuteTime())
+                .setConfig(new JsonObject().put("VXENV", environment));
+        return options;
     }
 
 }

@@ -9,12 +9,13 @@ import mg.sygatechnology.vertx.configs.ConfigItem;
 public class Common {
 
     protected static io.vertx.ext.web.Router router;
+    protected static Vertx vertx;
 
     /**
-     * Init App
+     * Init Router
      */
-
-    public static void initApp(Vertx vertx) {
+    public static void initRouter(Vertx v) {
+        vertx = v;
         router = io.vertx.ext.web.Router.router(vertx);
     }
 

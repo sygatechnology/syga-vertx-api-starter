@@ -78,4 +78,8 @@ public class ConfigItem {
         return keys;
     }
 
+    public boolean keyExists(String key) {
+        return this.properties.containsKey(key);
+    }
+
 }

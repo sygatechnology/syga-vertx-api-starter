@@ -8,14 +8,16 @@ import mg.sygatechnology.vertx.system.interfaces.RouterInt;
 public class Router implements RouterInt {
 
     protected Controller controller;
+    protected io.vertx.ext.web.Router router;
 
     public Router(Controller c) {
         this.controller = c;
+        this.router = Common.getRouter();
     }
 
     @Override
     public void registerGetHttpMethod(String path) {
-        Common.getRouter()
+        this.router
                 .get(path)
                 .produces("application/json")
                 .handler(this.controller::find);
@@ -23,7 +25,8 @@ public class Router implements RouterInt {
 
     @Override
     public void registerPostHttpMethod(String path) {
-        Common.getRouter().post(path)
+        this.router
+                .post(path)
                 .consumes("application/*")
                 .produces("application/json")
                 .handler(BodyHandler.create())
@@ -32,7 +35,8 @@ public class Router implements RouterInt {
 
     @Override
     public void registerPutHttpMethod(String path) {
-        Common.getRouter().put(path)
+        this.router
+                .put(path)
                 .consumes("application/*")
                 .produces("application/json")
                 .handler(BodyHandler.create())
@@ -41,7 +45,7 @@ public class Router implements RouterInt {
 
     @Override
     public void registerDeleteHttpMethod(String path) {
-        Common.getRouter()
+        this.router
                 .delete(path)
                 .produces("application/json")
                 .handler(this.controller::delete);

@@ -5,9 +5,9 @@ import mg.sygatechnology.vertx.system.Common;
 
 public class AppConfig extends Common {
 
-    public static void init() {
+    public static void initControllers() {
 
-        registerResource("/test", new LogController(), "get", "post");
+        registerResource("/test", new LogController());
 
     }
 
