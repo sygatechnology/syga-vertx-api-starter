@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="326c5cdd-4fcd-42a0-b7ff-5bacb11ef801" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run" beforeDir="false" afterPath="$PROJECT_DIR$/run" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/vertx-api-starter.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/environments/development.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/environments/development.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/environments/production.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/environments/production.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/environments/staging.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/environments/staging.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mg/sygatechnology/vertx/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mg/sygatechnology/vertx/app/controllers/LogController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

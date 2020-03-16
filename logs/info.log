@@ -41,3 +41,4 @@
 2020-03-16 21:12:11,404 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8081
 2020-03-16 21:17:15,724 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8081
 2020-03-16 21:17:38,196 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8082
+2020-03-16 21:21:00,547 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 8081
