@@ -38,3 +38,6 @@
 2020-03-16 17:20:48,819 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
 2020-03-16 17:21:12,778 INFO m.s.v.a.c.TestController [vert.x-worker-thread-4] Tatay eeeeee
 2020-03-16 17:21:32,055 INFO m.s.v.a.c.TestController [vert.x-worker-thread-5] Tatay 2222222222 eeeeee
+2020-03-16 21:12:11,404 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8081
+2020-03-16 21:17:15,724 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8081
+2020-03-16 21:17:38,196 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8082
