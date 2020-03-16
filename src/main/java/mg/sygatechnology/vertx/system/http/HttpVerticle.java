@@ -2,10 +2,9 @@ package mg.sygatechnology.vertx.system.http;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
-import mg.sygatechnology.vertx.App;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import mg.sygatechnology.vertx.configs.AppConfig;
+import mg.sygatechnology.vertx.configs.App;
 import mg.sygatechnology.vertx.configs.ConfigItem;
 import mg.sygatechnology.vertx.system.Common;
 
@@ -20,11 +19,11 @@ public class HttpVerticle extends AbstractVerticle {
         ConfigItem configItem = Common.config(environment);
         int portNumber = configItem.getInteger("port");
 
-        AppConfig.initRouter(vertx);
-        AppConfig.initControllers();
+        App.initRouter(vertx);
+        App.initControllers();
 
         vertx.createHttpServer()
-                .requestHandler(AppConfig.getRouter())
+                .requestHandler(App.getRouter())
                 .listen(configItem.getInteger("port"), ar -> {
                     if (ar.succeeded()) {
                         LOGGER.info("HTTP server running on port " + portNumber);

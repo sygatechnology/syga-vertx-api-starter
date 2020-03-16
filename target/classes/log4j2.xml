@@ -42,10 +42,10 @@
         </RollingRandomAccessFile>
 
         <SMTP name="LogToMail"
-              subject="${sys:log4j2Subject}"
-              from="${sys:log4j2From}"
-              to="${sys:log4j2To}"
-              smtpHost="${sys:log4j2SmtpHost}"
+              subject="Error Log From Vertx Rest Api Starter"
+              from="emm.omg@orange.com"
+              to="arisoarandriamamokatra.ext@orange.com"
+              smtpHost="192.168.19.101"
               bufferSize="100">
         </SMTP>
 
