@@ -1,5 +1,7 @@
 package mg.sygatechnology.vertx.app.controllers;
 
+import io.vertx.core.json.JsonObject;
+import mg.sygatechnology.vertx.app.services.ExampleMockService;
 import mg.sygatechnology.vertx.system.Controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,25 +12,33 @@ public class ExampleController extends Controller {
 
     @Override
     public void find() {
-        LOGGER.info("Mihinan'ny ampangony eeeee");
-        System.out.println("Path " + request().path().substring(1));
+        LOGGER.info("GET request");
+        respond(ExampleMockService.getAll());
     }
 
     @Override
     public void create() {
-        System.out.println("Mety Create letsy e !!!!");
-        System.out.println("Method " + request().method().name());
+        LOGGER.info("POST request");
+        ExampleMockService.add(bodyAsObject());
+        respondCreated("Example object created");
     }
 
     @Override
     public void update() {
-        System.out.println("Mety Update letsy e !!!!");
-        System.out.println("Method " + request().method().name());
+        LOGGER.info("UPDATE request");
+        JsonObject json = bodyAsObject();
+        int index = json.getInteger("index");
+        JsonObject obj = json.getJsonObject("obj");
+        ExampleMockService.set(index, obj);
+        respond(json);
     }
 
     @Override
     public void delete() {
-        System.out.println("Mety Delete letsy e !!!!");
-        System.out.println("Method " + request().method().name());
+        LOGGER.info("DELETE request");
+        JsonObject json = bodyAsObject();
+        int index = json.getInteger("index");
+        ExampleMockService.del(index);
+        respond(ExampleMockService.getAll());
     }
 }

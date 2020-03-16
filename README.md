@@ -79,7 +79,19 @@ curl http://localhost:8081/example
 // POST
 curl --header "Content-Type: application/json" \
   --request POST \
-  --data '{"name": "Test", "email": "sygatechnology@gmail.com"}' \
+  --data '{"id": 5, "name": "Chris"}' \
+  http://localhost:8081/example
+
+// PUT
+curl --header "Content-Type: application/json" \
+  --request PUT \
+  --data '{"index": 3, "obj": {"id": 4, "name": "William"}}' \
+  http://localhost:8081/example
+
+// DELETE
+curl --header "Content-Type: application/json" \
+  --request DELETE \
+  --data '{"index": 2}' \
   http://localhost:8081/example
 ```
 

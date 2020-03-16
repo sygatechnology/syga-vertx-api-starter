@@ -42,3 +42,13 @@
 2020-03-16 21:17:15,724 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8081
 2020-03-16 21:17:38,196 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8082
 2020-03-16 21:21:00,547 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 8081
+2020-03-16 21:59:32,213 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8081
+2020-03-16 22:01:30,294 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-2] GET request
+2020-03-16 22:02:23,188 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-4] POST request
+2020-03-16 22:02:32,642 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-5] GET request
+2020-03-16 22:03:56,054 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-6] UPDATE request
+2020-03-16 22:04:01,483 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-7] GET request
+2020-03-16 22:04:44,768 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-8] DELETE request
+2020-03-16 22:04:52,233 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-9] GET request
+2020-03-16 22:08:22,139 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-10] POST request
+2020-03-16 22:08:33,263 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-12] GET request
