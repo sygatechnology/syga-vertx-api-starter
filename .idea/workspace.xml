@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="326c5cdd-4fcd-42a0-b7ff-5bacb11ef801" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run" beforeDir="false" afterPath="$PROJECT_DIR$/run" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mg/sygatechnology/vertx/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mg/sygatechnology/vertx/AppStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mg/sygatechnology/vertx/app/controllers/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mg/sygatechnology/vertx/app/controllers/ExampleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mg/sygatechnology/vertx/app/controllers/TestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mg/sygatechnology/vertx/configs/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mg/sygatechnology/vertx/configs/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/environments/development.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/environments/development.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/environments/production.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/environments/production.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/environments/staging.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/environments/staging.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,11 +146,11 @@
       <screen x="42" y="27" width="1324" height="741" />
     </state>
     <state x="437" y="155" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/42.27.1324.741/1366.0.1360.768@42.27.1324.741" timestamp="1584262877936" />
-    <state x="162" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584373040801">
+    <state x="162" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584382154421">
       <screen x="42" y="27" width="1324" height="741" />
     </state>
     <state x="162" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/42.27.1324.741/1366.0.1360.768@42.27.1324.741" timestamp="1584198835465" />
-    <state x="162" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/42.27.1324.741@42.27.1324.741" timestamp="1584373040801" />
+    <state x="162" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/42.27.1324.741@42.27.1324.741" timestamp="1584382154421" />
     <state x="512" y="110" width="374" height="582" key="#com.intellij.ide.util.MemberChooser" timestamp="1584286834914">
       <screen x="42" y="27" width="1324" height="741" />
     </state>

@@ -1,2 +1,2 @@
 #!/bin/bash
-mvn exec:java -Dexec.mainClass="mg.sygatechnology.vertx.AppStarter"
+mvn exec:java -Dexec.mainClass="mg.sygatechnology.vertx.AppStarter" -Dexec.args="development"
