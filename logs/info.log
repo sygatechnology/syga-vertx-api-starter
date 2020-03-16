@@ -15,3 +15,26 @@
 2020-03-16 09:37:03,728 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
 2020-03-16 09:37:32,121 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 9003
 2020-03-16 10:08:19,384 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 10:09:31,394 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 9003
+2020-03-16 10:41:07,311 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 10:49:24,055 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 14:17:48,449 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 14:25:12,926 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 9003
+2020-03-16 14:26:19,945 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 14:26:34,089 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 14:32:36,633 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 14:32:54,415 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 14:34:33,595 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 15:00:47,012 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 15:15:48,145 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 15:59:58,217 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 16:00:03,763 INFO m.s.v.a.c.LogController [vert.x-worker-thread-3] Mihinan'ny ampangony eeeee
+2020-03-16 16:07:29,305 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 16:07:39,855 INFO m.s.v.a.c.TestController [vert.x-worker-thread-4] Tatay eeeeee
+2020-03-16 16:08:17,886 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 16:08:23,048 INFO m.s.v.a.c.TestController [vert.x-worker-thread-3] Tatay eeeeee
+2020-03-16 16:08:28,914 INFO m.s.v.a.c.TestController [vert.x-worker-thread-5] Tatay 2222222222 eeeeee
+2020-03-16 16:11:36,564 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 17:20:48,819 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-2] HTTP server running on port 9003
+2020-03-16 17:21:12,778 INFO m.s.v.a.c.TestController [vert.x-worker-thread-4] Tatay eeeeee
+2020-03-16 17:21:32,055 INFO m.s.v.a.c.TestController [vert.x-worker-thread-5] Tatay 2222222222 eeeeee

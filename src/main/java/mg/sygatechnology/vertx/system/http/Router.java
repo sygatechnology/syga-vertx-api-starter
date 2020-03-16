@@ -1,4 +1,4 @@
-package mg.sygatechnology.vertx.configs;
+package mg.sygatechnology.vertx.system.http;
 
 import io.vertx.ext.web.handler.BodyHandler;
 import mg.sygatechnology.vertx.system.Common;
@@ -20,7 +20,7 @@ public class Router implements RouterInt {
         this.router
                 .get(path)
                 .produces("application/json")
-                .handler(this.controller::find);
+                .handler(this.controller::initHandler);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class Router implements RouterInt {
                 .consumes("application/*")
                 .produces("application/json")
                 .handler(BodyHandler.create())
-                .handler(this.controller::create);
+                .handler(this.controller::initHandler);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Router implements RouterInt {
                 .consumes("application/*")
                 .produces("application/json")
                 .handler(BodyHandler.create())
-                .handler(this.controller::update);
+                .handler(this.controller::initHandler);
     }
 
     @Override
@@ -48,6 +48,7 @@ public class Router implements RouterInt {
         this.router
                 .delete(path)
                 .produces("application/json")
-                .handler(this.controller::delete);
+                .handler(BodyHandler.create())
+                .handler(this.controller::initHandler);
     }
 }

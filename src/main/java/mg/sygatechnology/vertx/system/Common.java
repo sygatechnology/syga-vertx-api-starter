@@ -1,10 +1,13 @@
 package mg.sygatechnology.vertx.system;
 
 import io.vertx.core.Vertx;
-import io.vertx.core.json.JsonObject;
-import mg.sygatechnology.vertx.configs.Router;
 import mg.sygatechnology.vertx.configs.Config;
 import mg.sygatechnology.vertx.configs.ConfigItem;
+import mg.sygatechnology.vertx.system.http.Router;
+import mg.sygatechnology.vertx.system.http.SubRouter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Common {
 
@@ -50,7 +53,7 @@ public class Common {
     /**
      * Register Route
      */
-    public static void registerRoute(String httpMethod, String path, Controller controller) {
+    public static SubRouter registerRoute(String httpMethod, String path, Controller controller) {
         Router router = new Router(controller);
         httpMethod = httpMethod.toLowerCase();
         if(! path.startsWith("/")) {
@@ -64,28 +67,37 @@ public class Common {
             router.registerPutHttpMethod(path);
         } else if(httpMethod.equals("delete")) {
             router.registerDeleteHttpMethod(path);
+        } else {
+            throw new IllegalArgumentException("Http method " + httpMethod + " not allowed.");
         }
+        return new SubRouter(router);
     }
 
     /**
      * Register Resource
      */
-    public static void registerResource(String path, Controller controller, String... excludedMethods) {
-        JsonObject routes = new JsonObject()
-                                    .put("get", true)
-                                    .put("post", true)
-                                    .put("put", true)
-                                    .put("delete", true);
-        if(excludedMethods.length > 0) {
-            for (String httpMethod : excludedMethods){
+    public static SubRouter registerResource(String path, Controller controller, String... onlyMethods) {
+        Map<String, Boolean> routes = new HashMap();
+        if(onlyMethods.length == 0) {
+            routes.put("get", true);
+            routes.put("post", true);
+            routes.put("put", true);
+            routes.put("delete", true);
+        } else {
+            for (String httpMethod : onlyMethods){
                 httpMethod = httpMethod.toLowerCase();
-                routes.put(httpMethod, false);
+                routes.put(httpMethod, true);
             }
         }
-        routes.forEach(entry -> {
-            if ((Boolean) entry.getValue() == true) {
-                registerRoute(entry.getKey(), path, controller);
+        SubRouter subRouter = null;
+        for (Map.Entry<String, Boolean> entry : routes.entrySet()) {
+            if (entry.getValue() == true) {
+                subRouter = registerRoute(entry.getKey(), path, controller);
             }
-        });
+        }
+        if(subRouter == null) {
+            throw new IllegalArgumentException("Router resource must have at least one http method ( GET, POST, PUT or DELETE )");
+        }
+        return subRouter;
     }
 }

@@ -1,31 +1,34 @@
 package mg.sygatechnology.vertx.app.controllers;
 
-import io.vertx.ext.web.RoutingContext;
 import mg.sygatechnology.vertx.system.Controller;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class LogController extends Controller {
 
+    private static final Logger LOGGER = LogManager.getLogger(LogController.class);
+
     @Override
-    public void find(RoutingContext routingContext) {
+    public void find() {
+        LOGGER.info("Mihinan'ny ampangony eeeee");
+        System.out.println("Path " + request().path().substring(1));
     }
 
     @Override
-    public void create(RoutingContext routingContext) {
+    public void create() {
         System.out.println("Mety Create letsy e !!!!");
+        System.out.println("Method " + request().method().name());
     }
 
     @Override
-    public void update(RoutingContext routingContext) {
+    public void update() {
         System.out.println("Mety Update letsy e !!!!");
+        System.out.println("Method " + request().method().name());
     }
 
     @Override
-    public void delete(RoutingContext routingContext) {
+    public void delete() {
         System.out.println("Mety Delete letsy e !!!!");
-    }
-
-    @Override
-    public void resource(RoutingContext routingContext) {
-
+        System.out.println("Method " + request().method().name());
     }
 }

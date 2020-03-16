@@ -46,3 +46,7 @@ java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
 java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
 	at mg.sygatechnology.vertx.App.getData(App.java:44) ~[classes/:?]
 	at mg.sygatechnology.vertx.App.main(App.java:32) [classes/:?]
+2020-03-16 10:09:29,402 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:44) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:32) [classes/:?]
