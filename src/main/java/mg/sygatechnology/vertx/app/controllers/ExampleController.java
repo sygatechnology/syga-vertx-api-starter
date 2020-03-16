@@ -4,9 +4,9 @@ import mg.sygatechnology.vertx.system.Controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class LogController extends Controller {
+public class ExampleController extends Controller {
 
-    private static final Logger LOGGER = LogManager.getLogger(LogController.class);
+    private static final Logger LOGGER = LogManager.getLogger(ExampleController.class);
 
     @Override
     public void find() {

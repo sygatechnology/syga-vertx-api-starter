@@ -41,13 +41,13 @@
             <DefaultRolloverStrategy max="10"/>
         </RollingRandomAccessFile>
 
-        <SMTP name="LogToMail"
+        <!--<SMTP name="LogToMail"
               subject="Error Log From Vertx Rest Api Starter"
-              from="emm.omg@orange.com"
-              to="arisoarandriamamokatra.ext@orange.com"
-              smtpHost="192.168.19.101"
+              from="sender@example.com"
+              to="receiver@example.com"
+              smtpHost="smt.example.phost"
               bufferSize="100">
-        </SMTP>
+        </SMTP>-->
 
     </Appenders>
 	
@@ -58,11 +58,10 @@
             <AppenderRef ref="debugLog"/>
             <AppenderRef ref="errorLog"/>
             <AppenderRef ref="LogToConsole"/>
-            <AppenderRef ref="LogToMail"/>
         </AsyncLogger>
         <Root level="error">
             <AppenderRef ref="LogToConsole"/>
-            <AppenderRef ref="LogToMail"/>
+            <!--<AppenderRef ref="LogToMail"/>-->
         </Root>
     </Loggers>
 </Configuration>
