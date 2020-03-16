@@ -1,0 +1,48 @@
+2020-03-16 09:02:41,362 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:03:51,389 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:08:42,979 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:16:56,113 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:18:05,572 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:20:43,355 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:27:18,727 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:31:50,270 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:35:03,225 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:37:02,129 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 09:37:30,399 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:38) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:20) [classes/:?]
+2020-03-16 10:08:17,099 ERROR m.s.v.App [main] {}
+java.lang.IllegalArgumentException: Sorry IllegalArgumentException!
+	at mg.sygatechnology.vertx.App.getData(App.java:44) ~[classes/:?]
+	at mg.sygatechnology.vertx.App.main(App.java:32) [classes/:?]

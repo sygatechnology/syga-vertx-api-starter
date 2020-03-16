@@ -1,0 +1,10 @@
+*~
+.gradle/*
+.idea/*
+*.class
+build/*
+out/*
+target/*
+apistarter.iml
+run
+logs/*

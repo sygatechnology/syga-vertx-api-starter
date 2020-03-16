@@ -22,6 +22,7 @@ public class App {
         final Vertx vertx = Vertx.vertx();
         final VertxOptions vertxOptions = setVertxOptions();
         vertx.deployVerticle(HttpVerticle.class.getName(), setDepOptions(vertxOptions, environment));
+
     }
 
     private static VertxOptions setVertxOptions(){

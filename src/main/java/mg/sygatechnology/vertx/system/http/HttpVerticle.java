@@ -11,7 +11,7 @@ import mg.sygatechnology.vertx.system.Common;
 
 public class HttpVerticle extends AbstractVerticle {
 
-    private static final Logger LOGGER = LogManager.getLogger(App.class);
+    private static final Logger LOGGER = LogManager.getLogger(HttpVerticle.class);
 
     @Override
     public void start(Promise<Void> promise) throws Exception {
