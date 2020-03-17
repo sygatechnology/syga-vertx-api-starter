@@ -13,6 +13,16 @@ public class Router implements RouterInt {
     public Router(Controller c) {
         this.controller = c;
         this.router = Common.getRouter();
+
+        this.router.route().failureHandler(ctx -> {
+            if (ctx.statusCode() == 404) {
+                ctx.response()
+                        .setStatusCode(404)
+                        .end("NOT FOUND fancy html here!!!");
+            } else {
+                ctx.next();
+            }
+        });
     }
 
     @Override

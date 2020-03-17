@@ -2,12 +2,12 @@ package mg.sygatechnology.vertx.system.interfaces;
 
 public interface SubRouterInt {
 
-    void subGetHttpMethod(String path);
+    SubRouterInt registerGetHttpMethod(String path);
 
-    void subPostHttpMethod(String path);
+    SubRouterInt registerPostHttpMethod(String path);
 
-    void subPutHttpMethod(String path);
+    SubRouterInt registerPutHttpMethod(String path);
 
-    void subDeleteHttpMethod(String path);
+    SubRouterInt registerDeleteHttpMethod(String path);
 
 }

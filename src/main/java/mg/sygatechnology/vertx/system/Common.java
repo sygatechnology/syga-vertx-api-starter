@@ -6,6 +6,7 @@ import mg.sygatechnology.vertx.configs.ConfigItem;
 import mg.sygatechnology.vertx.system.http.Router;
 import mg.sygatechnology.vertx.system.http.SubRouter;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ public class Common {
     public static void initRouter(Vertx v) {
         vertx = v;
         router = io.vertx.ext.web.Router.router(vertx);
+
     }
 
     /**
@@ -76,28 +78,34 @@ public class Common {
     /**
      * Register Resource
      */
-    public static SubRouter registerResource(String path, Controller controller, String... onlyMethods) {
-        Map<String, Boolean> routes = new HashMap();
-        if(onlyMethods.length == 0) {
-            routes.put("get", true);
-            routes.put("post", true);
-            routes.put("put", true);
-            routes.put("delete", true);
-        } else {
-            for (String httpMethod : onlyMethods){
-                httpMethod = httpMethod.toLowerCase();
-                routes.put(httpMethod, true);
+    public static SubRouter registerResource(String path, Class controllerClass, String... onlyMethods) {
+        try {
+            Controller controller = (Controller) controllerClass.getDeclaredConstructor().newInstance();
+            Map<String, Boolean> routes = new HashMap();
+            if(onlyMethods.length == 0) {
+                routes.put("get", true);
+                routes.put("post", true);
+                routes.put("put", true);
+                routes.put("delete", true);
+            } else {
+                for (String httpMethod : onlyMethods){
+                    httpMethod = httpMethod.toLowerCase();
+                    routes.put(httpMethod, true);
+                }
             }
-        }
-        SubRouter subRouter = null;
-        for (Map.Entry<String, Boolean> entry : routes.entrySet()) {
-            if (entry.getValue() == true) {
-                subRouter = registerRoute(entry.getKey(), path, controller);
+            SubRouter subRouter = null;
+            for (Map.Entry<String, Boolean> entry : routes.entrySet()) {
+                if (entry.getValue() == true) {
+                    subRouter = registerRoute(entry.getKey(), path, controller);
+                }
             }
+            if(subRouter == null) {
+                throw new IllegalArgumentException("Router resource must have at least one http method ( GET, POST, PUT or DELETE )");
+            }
+            return subRouter;
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            e.printStackTrace();
         }
-        if(subRouter == null) {
-            throw new IllegalArgumentException("Router resource must have at least one http method ( GET, POST, PUT or DELETE )");
-        }
-        return subRouter;
+        throw new IllegalArgumentException("Error");
     }
 }

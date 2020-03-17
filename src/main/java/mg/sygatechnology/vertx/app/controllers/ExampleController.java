@@ -16,6 +16,18 @@ public class ExampleController extends Controller {
         respond(ExampleMockService.getAll());
     }
 
+    public void find(String sIndex) {
+        LOGGER.info("GET request with one arg");
+        int index = Integer.parseInt(sIndex);
+        respond(ExampleMockService.getByIndex(index));
+    }
+
+    public void find(String un, String deux) {
+        LOGGER.info("GET request with two args");
+        System.out.println("Arg 1 : " + un + " et Arg 2 : " + deux);
+        respond(ExampleMockService.getAll());
+    }
+
     @Override
     public void create() {
         LOGGER.info("POST request");

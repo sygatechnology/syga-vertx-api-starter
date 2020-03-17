@@ -10,22 +10,26 @@ public class SubRouter implements SubRouterInt {
     }
 
     @Override
-    public void subGetHttpMethod(String path) {
+    public SubRouter registerGetHttpMethod(String path) {
         this.router.registerGetHttpMethod(path);
+        return this;
     }
 
     @Override
-    public void subPostHttpMethod(String path) {
+    public SubRouter registerPostHttpMethod(String path) {
         this.router.registerPostHttpMethod(path);
+        return this;
     }
 
     @Override
-    public void subPutHttpMethod(String path) {
+    public SubRouter registerPutHttpMethod(String path) {
         this.router.registerPutHttpMethod(path);
+        return this;
     }
 
     @Override
-    public void subDeleteHttpMethod(String path) {
+    public SubRouter registerDeleteHttpMethod(String path) {
         this.router.registerDeleteHttpMethod(path);
+        return this;
     }
 }

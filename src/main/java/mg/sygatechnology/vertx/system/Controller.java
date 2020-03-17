@@ -8,49 +8,59 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import mg.sygatechnology.vertx.app.http.HttpParams;
 import mg.sygatechnology.vertx.app.http.HttpResponse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public abstract class Controller extends HttpResponse {
 
+    private static final Logger LOGGER = LogManager.getLogger(Controller.class);
+
     private RoutingContext routingC;
 
+    public void initHandler(RoutingContext ctx) {
 
-    public void initHandler(RoutingContext rc) {
-        this.routingC = rc;
-        setHttpResponse(rc.response());
+        this.routingC = ctx;
+        setHttpResponse(ctx.response());
 
         HttpMethod method = request().method();
-        /*String path = request().path().substring(1);
-
-        String[] segment = path.split("\\/");
-        if(segment.length == 1) {
-            if(method.equals(HttpMethod.GET)){
-                find();
-            }
-            if(method.equals(HttpMethod.POST)){
-                create();
-            }
-            if(method.equals(HttpMethod.PUT)){
-                update();
-            }
-            if(method.equals(HttpMethod.DELETE)){
-                delete();
-            }
-        } else {
-            if(method.equals(HttpMethod.GET)){
-                find(segment);
-            }
-        }*/
+        String methodName = null;
         if(method.equals(HttpMethod.GET)){
-            find();
+            methodName = "find";
         }
         if(method.equals(HttpMethod.POST)){
-            create();
+            methodName = "create";
         }
         if(method.equals(HttpMethod.PUT)){
-            update();
+            methodName = "update";
         }
         if(method.equals(HttpMethod.DELETE)){
-            delete();
+            methodName = "delete";
+        }
+        String path = request().path().substring(1);
+        String[] segment = path.split("\\/");
+        int segmentLength = segment.length;
+        try {
+            int totalParmas = (segmentLength > 0) ? (segment.length - 1) : segmentLength;
+            Class paramTypes[] = new Class[totalParmas];
+            Object argList[] = new Object[totalParmas];
+            int s = 1;
+            for(int i = 0; i < totalParmas; i++){
+                paramTypes[i] = String.class;
+                argList[i] = segment[s];
+                s++;
+            }
+            try {
+                Class thisClass = Class.forName(this.getClass().getName());
+                Method callbackMethod = thisClass.getDeclaredMethod(methodName, paramTypes);
+                callbackMethod.invoke(this, argList);
+            } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                LOGGER.error(e);
+            }
+        } catch (ClassNotFoundException e) {
+            LOGGER.error(e);
         }
     }
 

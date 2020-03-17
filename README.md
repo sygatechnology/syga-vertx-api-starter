@@ -100,7 +100,6 @@ curl --header "Content-Type: application/json" \
 
 ### Fonctionnalités en cours d'implementation
 
-* `sub-route`: pour différencier les appels des fonctions du même nom mais avec des paramètres différents
 * `jdbc-builder`: bibliothèque pour les bases de données
 * `user-management`: gestion d'utilisateur par défaut
 * `jwt`: pour les sessions  

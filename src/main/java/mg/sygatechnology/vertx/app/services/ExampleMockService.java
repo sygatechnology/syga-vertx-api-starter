@@ -13,6 +13,10 @@ public class ExampleMockService {
         return data;
     }
 
+    public static JsonObject getByIndex(int index) {
+        return data.getJsonObject(index);
+    }
+
     public static void add(JsonObject json) {
         data.add(json);
     }

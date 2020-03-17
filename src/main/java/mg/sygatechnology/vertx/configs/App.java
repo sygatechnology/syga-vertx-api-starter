@@ -7,7 +7,8 @@ public class App extends Common {
 
     public static void initControllers() {
 
-        registerResource("/example", new ExampleController());
+        registerResource("/example", ExampleController.class)
+                .registerGetHttpMethod("/example/:index");
 
     }
 
