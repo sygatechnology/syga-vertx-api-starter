@@ -1,6 +1,5 @@
 *~
 .gradle/
-.idea/
 *.class
 build/
 out/
@@ -10,3 +9,4 @@ run
 logs/
 dependency-reduced-pom.xml
 bash.exe.stackdump
+.idea/

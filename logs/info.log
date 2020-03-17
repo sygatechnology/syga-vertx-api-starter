@@ -52,3 +52,4 @@
 2020-03-16 22:04:52,233 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-9] GET request
 2020-03-16 22:08:22,139 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-10] POST request
 2020-03-16 22:08:33,263 INFO m.s.v.a.c.ExampleController [vert.x-worker-thread-12] GET request
+2020-03-17 08:48:48,497 INFO m.s.v.s.h.HttpVerticle [vert.x-worker-thread-1] HTTP server running on port 8081
