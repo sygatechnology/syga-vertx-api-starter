@@ -8,7 +8,7 @@ import mg.sygatechnology.vertx.configs.Config;
 import mg.sygatechnology.vertx.configs.ConfigItem;
 import mg.sygatechnology.vertx.system.http.HttpVerticle;
 
-public class App {
+public class AppStarter {
 
     public static void main(String[] args) {
 
