@@ -6,7 +6,9 @@ out/
 target/
 apistarter.iml
 run
-logs/*
+logs/debug.log
+logs/error.log
+logs/info.log
 dependency-reduced-pom.xml
 bash.exe.stackdump
 .idea/
