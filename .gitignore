@@ -1,0 +1,12 @@
+*~
+.gradle/
+*.class
+build/
+out/
+target/
+apistarter.iml
+run
+logs/*
+dependency-reduced-pom.xml
+bash.exe.stackdump
+.idea/
