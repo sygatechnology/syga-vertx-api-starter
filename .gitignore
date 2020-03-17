@@ -7,7 +7,6 @@ out/
 target/
 apistarter.iml
 run
-logs/bash.exe.stackdump
+logs/
 dependency-reduced-pom.xml
 bash.exe.stackdump
-target/

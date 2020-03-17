@@ -3,6 +3,7 @@
 ## Qu'est-ce que Syga Vertx Rest API Starter?
 
 Syga Vertx Rest API Starter est un outil pour créer un API Rest, développé à partir de la trousse d'outils pour créer des applications réactives sur la JVM, Eclipse Vert.x, utilisant le langage JAVA .
+
 Plus d'informations peuvent être trouvées sur le [site officiel](https://vertx.io).
 
 **Ceci est encore une version de test**
