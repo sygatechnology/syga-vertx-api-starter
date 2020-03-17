@@ -1,5 +1,7 @@
 # Syga Vertx Rest API Starter
 
+![Java CI with Maven](https://github.com/sygatechnology/vertx-api-starter/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)
+
 ## Qu'est-ce que Syga Vertx Rest API Starter?
 
 Syga Vertx Rest API Starter est un outil pour créer un API Rest, développé à partir de la trousse d'outils pour créer des applications réactives sur la JVM, Eclipse Vert.x, utilisant le langage JAVA .
