@@ -1,14 +1,16 @@
 package mg.sygatechnology.vertx.system;
 
 import io.vertx.core.Vertx;
+import io.vertx.core.http.HttpMethod;
+import mg.sygatechnology.vertx.app.helpers.CommonHelper;
 import mg.sygatechnology.vertx.configs.Config;
 import mg.sygatechnology.vertx.configs.ConfigItem;
+import mg.sygatechnology.vertx.system.annotations.Route;
 import mg.sygatechnology.vertx.system.http.Router;
-import mg.sygatechnology.vertx.system.http.SubRouter;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Method;
+import java.util.List;
 
 public class Common {
 
@@ -21,6 +23,28 @@ public class Common {
     public static void initRouter(Vertx v) {
         vertx = v;
         router = io.vertx.ext.web.Router.router(vertx);
+
+    }
+
+    public static void initControllers() {
+        for(Class controller : CommonHelper.getControllerClasses()){
+            Method[] methods = controller.getDeclaredMethods();
+            for ( Method m : methods ) {
+                Route route = m.getAnnotation( Route.class );
+                mg.sygatechnology.vertx.system.annotations.Method method = m.getAnnotation( mg.sygatechnology.vertx.system.annotations.Method.class );
+
+                if ( route != null && method != null ) {
+                    String methodName = m.getName();
+                    List<String> methodParameters = CommonHelper.getMethodParameters(m.getParameters());
+
+                    registerRoute(method.value(), route.value(), controller);
+
+                    System.out.println( m.getName() + " / Params : " + methodParameters + " : / Path : " + route.value() );
+                }
+            }
+        }
+
+
 
     }
 
@@ -55,30 +79,35 @@ public class Common {
     /**
      * Register Route
      */
-    public static SubRouter registerRoute(String httpMethod, String path, Controller controller) {
-        Router router = new Router(controller);
-        httpMethod = httpMethod.toLowerCase();
-        if(! path.startsWith("/")) {
-            path = "/"+path;
-        }
-        if(httpMethod.equals("get")) {
-            router.registerGetHttpMethod(path);
-        } else if(httpMethod.equals("post")) {
-            router.registerPostHttpMethod(path);
-        } else if(httpMethod.equals("put")) {
-            router.registerPutHttpMethod(path);
-        } else if(httpMethod.equals("delete")) {
-            router.registerDeleteHttpMethod(path);
-        } else {
+    public static void registerRoute(HttpMethod httpMethod, String path, Class controllerClass) {
+        try {
+            Controller controller = (Controller) controllerClass.getDeclaredConstructor().newInstance();
+            Router router = new Router(controller);
+            if(! path.startsWith("/")) {
+                path = "/"+path;
+            }
+            if(httpMethod.equals(HttpMethod.GET)) {
+                router.registerGetHttpMethod(path);
+            } else if(httpMethod.equals(HttpMethod.POST)) {
+                router.registerPostHttpMethod(path);
+            } else if(httpMethod.equals(HttpMethod.PUT)) {
+                router.registerPutHttpMethod(path);
+            } else if(httpMethod.equals(HttpMethod.DELETE)) {
+                router.registerDeleteHttpMethod(path);
+            } else {
+                throw new IllegalArgumentException("Http method " + httpMethod + " not allowed.");
+            }
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             throw new IllegalArgumentException("Http method " + httpMethod + " not allowed.");
         }
-        return new SubRouter(router);
+
+        //return new SubRouter(router);
     }
 
     /**
      * Register Resource
      */
-    public static SubRouter registerResource(String path, Class controllerClass, String... onlyMethods) {
+    /*public static SubRouter registerResource(String path, Class controllerClass, String... onlyMethods) {
         try {
             Controller controller = (Controller) controllerClass.getDeclaredConstructor().newInstance();
             Map<String, Boolean> routes = new HashMap();
@@ -107,5 +136,5 @@ public class Common {
             e.printStackTrace();
         }
         throw new IllegalArgumentException("Error");
-    }
+    }*/
 }

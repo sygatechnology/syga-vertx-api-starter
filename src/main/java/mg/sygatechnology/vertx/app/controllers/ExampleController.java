@@ -1,8 +1,11 @@
 package mg.sygatechnology.vertx.app.controllers;
 
+import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
 import mg.sygatechnology.vertx.app.services.ExampleMockService;
 import mg.sygatechnology.vertx.system.Controller;
+import mg.sygatechnology.vertx.system.annotations.Method;
+import mg.sygatechnology.vertx.system.annotations.Route;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,12 +13,14 @@ public class ExampleController extends Controller {
 
     private static final Logger LOGGER = LogManager.getLogger(ExampleController.class);
 
-    @Override
+
     public void find() {
         LOGGER.info("GET request");
         respond(ExampleMockService.getAll());
     }
 
+    @Route("/")
+    @Method(HttpMethod.GET)
     public void find(String sIndex) {
         LOGGER.info("GET request with one arg");
         int index = Integer.parseInt(sIndex);

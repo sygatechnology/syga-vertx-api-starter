@@ -20,7 +20,7 @@ public class HttpVerticle extends AbstractVerticle {
         int portNumber = configItem.getInteger("port");
 
         App.initRouter(vertx);
-        App.initControllers();
+        Common.initControllers();
 
         vertx.createHttpServer()
                 .requestHandler(App.getRouter())
