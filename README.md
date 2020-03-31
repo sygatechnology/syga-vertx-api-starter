@@ -42,8 +42,6 @@ Sur ce dossier se trouve un fichier `run`:
 ./run
 ```
 
-### Exemples
-
 Enregistrement de resource (GET, POST, PUT et DELETE) et son contrôleur
 
 * Créez un contrôleur dans le package `controllers` qui hérite la classe abstraite `Controller` dans le package `system`
@@ -64,7 +62,7 @@ Toutes ces annotations sont utilisable au niveau des méthodes du contrôleur
 
 Pour les réponses, vous avez les méthodes `respond` et `respondCreated` (Voir la classe parente `Controller`)
 
-Exemple :
+### Exemples
 ```java
 public class ExampleController extends Controller {
 
