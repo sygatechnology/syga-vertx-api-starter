@@ -8,7 +8,7 @@ Syga Vertx Rest API Starter est un outil pour créer un API Rest, développé à
 
 Plus d'informations peuvent être trouvées sur le [site officiel](https://vertx.io).
 
-**Ceci est encore une version de test**
+**Ceci est encore une version de test, mais vous pouvez bien l'améliorer à votre guise ;)**
 
 ### Comment ça marche?
 
@@ -126,6 +126,9 @@ Et pour tester après avoir lancé l'application
 ```bash
 // GET
 curl http://localhost:8081/example
+
+// GET
+curl http://localhost:8081/example/1
 
 // POST
 curl --header "Content-Type: application/json" \
