@@ -5,12 +5,11 @@ import io.vertx.core.http.HttpMethod;
 import mg.sygatechnology.vertx.app.helpers.CommonHelper;
 import mg.sygatechnology.vertx.configs.Config;
 import mg.sygatechnology.vertx.configs.ConfigItem;
-import mg.sygatechnology.vertx.system.annotations.Route;
+import mg.sygatechnology.vertx.system.annotations.*;
 import mg.sygatechnology.vertx.system.http.Router;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.List;
 
 public class Common {
 
@@ -31,21 +30,15 @@ public class Common {
             Method[] methods = controller.getDeclaredMethods();
             for ( Method m : methods ) {
                 Route route = m.getAnnotation( Route.class );
+                Produces produces = m.getAnnotation( Produces.class );
+                Consumes consumes = m.getAnnotation( Consumes.class );
                 mg.sygatechnology.vertx.system.annotations.Method method = m.getAnnotation( mg.sygatechnology.vertx.system.annotations.Method.class );
-
                 if ( route != null && method != null ) {
                     String methodName = m.getName();
-                    List<String> methodParameters = CommonHelper.getMethodParameters(m.getParameters());
-
-                    registerRoute(method.value(), route.value(), controller);
-
-                    System.out.println( m.getName() + " / Params : " + methodParameters + " : / Path : " + route.value() );
+                    registerRoute(method.value(), route.value(), controller, methodName, produces.value(), consumes.value());
                 }
             }
         }
-
-
-
     }
 
     /**
@@ -79,7 +72,7 @@ public class Common {
     /**
      * Register Route
      */
-    public static void registerRoute(HttpMethod httpMethod, String path, Class controllerClass) {
+    public static void registerRoute(HttpMethod httpMethod, String path, Class controllerClass, String controllerMethodName, String produces, String consumes) {
         try {
             Controller controller = (Controller) controllerClass.getDeclaredConstructor().newInstance();
             Router router = new Router(controller);
@@ -87,13 +80,13 @@ public class Common {
                 path = "/"+path;
             }
             if(httpMethod.equals(HttpMethod.GET)) {
-                router.registerGetHttpMethod(path);
+                router.registerGetHttpMethod(path, controllerMethodName, produces);
             } else if(httpMethod.equals(HttpMethod.POST)) {
-                router.registerPostHttpMethod(path);
+                router.registerPostHttpMethod(path, controllerMethodName, produces, consumes);
             } else if(httpMethod.equals(HttpMethod.PUT)) {
-                router.registerPutHttpMethod(path);
+                router.registerPutHttpMethod(path, controllerMethodName, produces, consumes);
             } else if(httpMethod.equals(HttpMethod.DELETE)) {
-                router.registerDeleteHttpMethod(path);
+                router.registerDeleteHttpMethod(path, controllerMethodName, produces, consumes);
             } else {
                 throw new IllegalArgumentException("Http method " + httpMethod + " not allowed.");
             }

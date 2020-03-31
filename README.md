@@ -42,8 +42,6 @@ Sur ce dossier se trouve un fichier `run`:
 ./run
 ```
 
-La class principale est `AppStarter`
-
 ### Exemples
 
 Enregistrement de resource (GET, POST, PUT et DELETE) et son contrôleur
@@ -52,26 +50,78 @@ Enregistrement de resource (GET, POST, PUT et DELETE) et son contrôleur
 
 (Vous pouvez voir l'exemple du contrôleur `ExampleController`) 
 
-* Dans la fonction statique `initControllers()` de la classe `vertx/configs/App`, vous allez déclarer vos routes
+Vous avez quatre annotations : `@Route`, `@Method`, `@Produces` et `@Consumes` du package `system.annotations`
+
+* `@Route` : pour la déclaration de votre route
+
+* `@Method` : pour la méthode http à utiliser (Prend comme paramètre `HttpMethod` de vertx)
+
+* `@Produces` : type de contenu produit par cette route
+
+* `@Consumes` : type de contenu consommé par cette route
+
+Toutes ces annotations sont utilisable au niveau des méthodes du contrôleur
+
+Pour les réponses, vous avez les méthodes `respond` et `respondCreated` (Voir la classe parente `Controller`)
+
+Exemple :
 ```java
-    public static void initControllers() {
+public class ExampleController extends Controller {
 
-        registerResource("/example", new ExampleController());
-    
-        // correspond à
-    
-        ExampleController exampleController = new ExampleController();
-        registerRoute("get", "/example", exampleController);
-        registerRoute("post", "/example", exampleController);
-        registerRoute("put", "/example", exampleController);
-        registerRoute("delete", "/example", exampleController);
-    
-        // Vous pouvez enregistrer une ressource avec juste les méthodes que vous voulez utiliser comme ceci
-    
-        registerResource("/example", new ExampleController(), "get", "post");
-        // Dans ce cas, votre route n'a accès qu'aux méthodes GET et POST
+    private static final Logger LOGGER = LogManager.getLogger(ExampleController.class);
 
+    @Route("/example")
+    @Method(HttpMethod.GET)
+    @Produces("application/json")
+    public void find() {
+        LOGGER.info("GET request");
+        respond(ExampleMockService.getAll());
     }
+
+    @Route("/example/:index")
+    @Method(HttpMethod.GET)
+    @Produces("application/json")
+    public void find(String sIndex) {
+        LOGGER.info("GET request with one arg");
+        int index = Integer.parseInt(sIndex);
+        respond(ExampleMockService.getByIndex(index));
+    }
+
+    @Route("/example")
+    @Method(HttpMethod.POST)
+    @Produces("application/json")
+    @Consumes("application/json")
+    public void create() {
+        LOGGER.info("POST request");
+        ExampleMockService.add(bodyAsObject());
+        respondCreated("Example object created");
+    }
+
+    @Route("/example")
+    @Method(HttpMethod.PUT)
+    @Produces("application/json")
+    @Consumes("application/json")
+    public void update() {
+        LOGGER.info("UPDATE request");
+        JsonObject json = bodyAsObject();
+        int index = json.getInteger("index");
+        JsonObject obj = json.getJsonObject("data");
+        ExampleMockService.set(index, obj);
+        respond(json);
+    }
+
+    @Route("/example")
+    @Method(HttpMethod.DELETE)
+    @Produces("application/json")
+    @Consumes("application/json")
+    public void delete() {
+        LOGGER.info("DELETE request");
+        JsonObject json = bodyAsObject();
+        int index = json.getInteger("index");
+        ExampleMockService.del(index);
+        respond(ExampleMockService.getAll());
+    }
+}
 ```
 
 Et pour tester après avoir lancé l'application

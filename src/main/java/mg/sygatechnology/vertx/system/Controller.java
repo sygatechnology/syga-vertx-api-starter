@@ -1,7 +1,6 @@
 package mg.sygatechnology.vertx.system;
 
 import io.vertx.core.buffer.Buffer;
-import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
@@ -20,25 +19,10 @@ public abstract class Controller extends HttpResponse {
 
     private RoutingContext routingC;
 
-    public void initHandler(RoutingContext ctx) {
+    public void initHandler(RoutingContext ctx, String methodName) {
 
         this.routingC = ctx;
         setHttpResponse(ctx.response());
-
-        HttpMethod method = request().method();
-        String methodName = null;
-        if(method.equals(HttpMethod.GET)){
-            methodName = "find";
-        }
-        if(method.equals(HttpMethod.POST)){
-            methodName = "create";
-        }
-        if(method.equals(HttpMethod.PUT)){
-            methodName = "update";
-        }
-        if(method.equals(HttpMethod.DELETE)){
-            methodName = "delete";
-        }
         String path = request().path().substring(1);
         String[] segment = path.split("\\/");
         int segmentLength = segment.length;
@@ -63,14 +47,6 @@ public abstract class Controller extends HttpResponse {
             LOGGER.error(e);
         }
     }
-
-    public abstract void find();
-
-    public abstract void create();
-
-    public abstract void update();
-
-    public abstract void delete();
 
     public HttpParams params() {
         HttpServerRequest request = this.routingC.request();

@@ -1,5 +1,6 @@
 package mg.sygatechnology.vertx.system.http;
 
+import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
 import mg.sygatechnology.vertx.system.Common;
 import mg.sygatechnology.vertx.system.Controller;
@@ -9,6 +10,7 @@ public class Router implements RouterInt {
 
     protected Controller controller;
     protected io.vertx.ext.web.Router router;
+    protected String controllerMethod;
 
     public Router(Controller c) {
         this.controller = c;
@@ -26,39 +28,48 @@ public class Router implements RouterInt {
     }
 
     @Override
-    public void registerGetHttpMethod(String path) {
+    public void registerGetHttpMethod(String path, String cMethod, String produces) {
+        this.controllerMethod = cMethod;
         this.router
                 .get(path)
-                .produces("application/json")
-                .handler(this.controller::initHandler);
+                .produces(produces)
+                .handler(this::setHandlerCallback);
     }
 
     @Override
-    public void registerPostHttpMethod(String path) {
+    public void registerPostHttpMethod(String path, String cMethod, String produces, String consumes) {
+        this.controllerMethod = cMethod;
         this.router
                 .post(path)
-                .consumes("application/*")
-                .produces("application/json")
+                .consumes(consumes)
+                .produces(produces)
                 .handler(BodyHandler.create())
-                .handler(this.controller::initHandler);
+                .handler(this::setHandlerCallback);
     }
 
     @Override
-    public void registerPutHttpMethod(String path) {
+    public void registerPutHttpMethod(String path, String cMethod, String produces, String consumes) {
+        this.controllerMethod = cMethod;
         this.router
                 .put(path)
-                .consumes("application/*")
-                .produces("application/json")
+                .consumes(consumes)
+                .produces(produces)
                 .handler(BodyHandler.create())
-                .handler(this.controller::initHandler);
+                .handler(this::setHandlerCallback);
     }
 
     @Override
-    public void registerDeleteHttpMethod(String path) {
+    public void registerDeleteHttpMethod(String path, String cMethod, String produces, String consumes) {
+        this.controllerMethod = cMethod;
         this.router
                 .delete(path)
-                .produces("application/json")
+                .consumes(consumes)
+                .produces(produces)
                 .handler(BodyHandler.create())
-                .handler(this.controller::initHandler);
+                .handler(this::setHandlerCallback);
+    }
+
+    private void setHandlerCallback(RoutingContext cxt) {
+        this.controller.initHandler(cxt, this.controllerMethod);
     }
 }

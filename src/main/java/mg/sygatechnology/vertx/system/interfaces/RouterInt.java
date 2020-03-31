@@ -2,12 +2,12 @@ package mg.sygatechnology.vertx.system.interfaces;
 
 public interface RouterInt {
 
-    void registerGetHttpMethod(String path);
+    void registerGetHttpMethod(String path, String controllerMethodName, String produces);
 
-    void registerPostHttpMethod(String path);
+    void registerPostHttpMethod(String path, String controllerMethodName, String produces, String consumes);
 
-    void registerPutHttpMethod(String path);
+    void registerPutHttpMethod(String path, String controllerMethodName, String produces, String consumes);
 
-    void registerDeleteHttpMethod(String path);
+    void registerDeleteHttpMethod(String path, String controllerMethodName, String produces, String consumes);
 
 }
