@@ -94,7 +94,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>mg.sygatechnology.vertx.AppStarter</mainClass>
+                                    <mainClass>mg.sygatechnology.api.AppStarter</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
