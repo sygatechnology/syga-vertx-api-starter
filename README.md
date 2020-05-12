@@ -151,8 +151,6 @@ curl --header "Content-Type: application/json" \
 
 ### Fonctionnalités en cours d'implementation
 
-* `jdbc-builder`: bibliothèque pour les bases de données
-* `user-management`: gestion d'utilisateur par défaut
-* `jwt`: pour les sessions  
+orm, session et autres
 
 #### Syga Vertx Rest API Starter
